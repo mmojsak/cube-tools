@@ -123,6 +123,11 @@ class cube():
     def get_volume(self):
         return self.voxelVolume, self.cubeVolume
 
+    def rescale_cube(self):
+        self.data = self.data / self.voxelVolume
+        print(f'Cube data divided by voxel volume ({self.voxelVolume} bohr$^-1$)')
+        return None
+
     def write_cube(self, fname, comment='Cube file written by cubetools \ncubetools %3.1f' % __version__):
         '''
         Write out a Gaussian Cube file
@@ -462,6 +467,9 @@ def main():
     parser.add_argument("Files",
                         help="Cube files used in program",
                         nargs='+')
+    parser.add_argument("-rs", "--rescale",
+                        help="Rescale a CASTEP cube file to e/bohr^3",
+                        action="store_true")
     parser.add_argument("-a", "--add",
                         help="Add two or more cube files together",
                         action="store_true")
