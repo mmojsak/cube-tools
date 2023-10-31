@@ -128,6 +128,11 @@ class cube():
         print(f'Cube data divided by voxel volume ({self.voxelVolume} bohr$^-3$)')
         return None
 
+    def get_extremes(self):
+        minimum = np.min(self.data)
+        maximum = np.max(self.data)
+        return minimum, maximum
+
     def write_cube(self, fname, comment='Cube file written by cubetools \ncubetools %3.1f' % __version__):
         '''
         Write out a Gaussian Cube file
