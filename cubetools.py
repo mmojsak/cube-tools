@@ -114,7 +114,7 @@ class cube():
             # if i != self.NX*self.NY*self.NZ: raise NameError, "FSCK!"
         return None
 
-    def write_cube(self, fname, comment='Cube file written by cube-tools \ncube-tools %3.1f' % __version__):
+    def write_cube(self, fname, comment='Cube file written by cubetools \ncubetools %3.1f' % __version__):
         '''
         Write out a Gaussian Cube file
         '''
