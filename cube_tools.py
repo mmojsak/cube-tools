@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-import time
+# import time
 import numpy as np
-from os.path import isfile
-from sys import exit,argv
+# from os.path import isfile
+# from sys import exit,argv
 from scipy import ndimage
 from scipy.ndimage.filters import gaussian_filter
 from scipy.constants import physical_constants
-import argparse, copy
-import pdb
+# import argparse, copy
+# import pdb
 from argparse import RawTextHelpFormatter
 from skimage import transform
 from scipy.spatial.transform import Rotation as R
@@ -25,7 +25,7 @@ A python library and tool to read in and manipulate Gaussian cube files. This co
     Integrate around the whole cube file
     Take the planar average (with an option to Gaussian broaden)
 '''
-__version__ = 0.3
+__version__ = 1.0
 
 
 class cube():
@@ -164,6 +164,14 @@ class cube():
         '''
         self.data = self.data**power
         print(power)
+        return None
+
+    def scale_cube(self, files, factor):
+        '''
+        Scales cube data by a given factor
+        '''
+        self.data = self.data * factor
+        print(factor)
         return None
 
     def rotate_cube(self, angle, axes=None):
