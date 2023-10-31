@@ -14,7 +14,7 @@ setup(
         "Topic :: Scientific/Engineering :: Chemistry",
     ],
     py_modules=[
-        "cube-tools",
+        "cube_tools",
     ],
     entry_points={
         "console_scripts": [
