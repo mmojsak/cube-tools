@@ -17,7 +17,7 @@ Integrating around an atom or reference point requires xyz coordinates as an inp
 
 Requires numpy and scipy. If you have pip, you can just run
 ```
-pip install git+https://github.com/funkymunkycool/Cube-Toolz.git
+pip install git+https://github.com/mmojsak/cube-tools
 ```
 to install the ``cube_tools`` module and an executable of the same name into the currently preferred Python package installation directories.
 
