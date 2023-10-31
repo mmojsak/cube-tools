@@ -34,7 +34,7 @@ positional arguments:
 
 optional arguments:
 * -h, --help            show this help message and exit
-* -r, --rescale         Rescale a CASTEP .cube file to e/bohr^3
+* -rs, --rescale         Rescale a CASTEP .cube file to e/bohr^3
 * -a, --add             Add two or more cube files together
 * -s, --subtract        Subtract two or more cube files together
 * -M, --multiply        Multiply two or more cube files together
