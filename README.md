@@ -1,8 +1,8 @@
 ----
-Cube Toolz
+cube-tools
 ----
 
-A python library and tool to read in and manipulate Gaussian cube files. This code allows you to:
+Python tools for working with Gaussian-style .cube files. This library includes functions to:
 - Read and write Gaussian cube files
 - Translate and rotate cube data
 - Integrate around a particular atom
