@@ -56,12 +56,12 @@ class cube():
         self.comment1 = 0
         self.comment2 = 0
         self.origin = np.array([0, 0, 0])
-        self.NX = 0
-        self.NY = 0
-        self.NZ = 0
-        self.X = 0
-        self.Y = 0
-        self.Z = 0
+        self.NX = 0  # number of voxels in X direction
+        self.NY = 0.  # number of voxels in Y direction
+        self.NZ = 0.  # number of voxels in Z direction
+        self.X = 0  # x-vector of voxel
+        self.Y = 0.  # y-vector of voxel
+        self.Z = 0.  # z-vector of voxel
         self.atoms = ['0']
         self.atomsXYZ = [0, 0, 0]
         self.data = [0]
@@ -74,13 +74,16 @@ class cube():
 
         with open(fname, 'r') as fin:
             self.filename = fname
+            # read comments
             self.comment1 = fin.readline()  # Save 1st comment
             self.comment2 = fin.readline()  # Save 2nd comment
+            # read atoms and origin
             nOrigin = fin.readline().split()  # Number of Atoms and Origin
             self.natoms = int(nOrigin[0])  # Number of Atoms
             self.origin = np.array([float(nOrigin[1]),
                                     float(nOrigin[2]),
                                     float(nOrigin[3])])  # Position of Origin
+            # read voxel data and dimensions of cube
             nVoxel = fin.readline().split()  # Number of Voxels
             self.NX = int(nVoxel[0])
             self.X = np.array([float(nVoxel[1]),
@@ -96,6 +99,9 @@ class cube():
             self.Z = np.array([float(nVoxel[1]),
                                float(nVoxel[2]),
                                float(nVoxel[3])])
+            # calculate voxel and cube volume
+            self.voxelVolume = abs(np.dot(self.X, (np.cross(self.Y, self.Z))))
+            self.cubeVolume = self.voxelVolume * self.NX * self.NY * self.NZ
             self.atoms = []
             self.atomsXYZ = []
             for atom in range(self.natoms):
