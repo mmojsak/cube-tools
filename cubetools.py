@@ -125,7 +125,7 @@ class cube():
 
     def rescale_cube(self):
         self.data = self.data / self.voxelVolume
-        print(f'Cube data divided by voxel volume ({self.voxelVolume} bohr$^-1$)')
+        print(f'Cube data divided by voxel volume ({self.voxelVolume} bohr$^-3$)')
         return None
 
     def write_cube(self, fname, comment='Cube file written by cubetools \ncubetools %3.1f' % __version__):
