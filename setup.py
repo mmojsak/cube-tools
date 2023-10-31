@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(
-    name="cube-tools",
+    name="cube_tools",
     version="1.0",
     description="A python library and tool to read in and manipulate Gaussian cube files.",
     keywords="gaussian cube file manipulation",
@@ -18,7 +18,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "cube-tools = cube-tools:main",
+            "cube_tools = cube_tools:main",
         ],
     },
     install_requires=[
