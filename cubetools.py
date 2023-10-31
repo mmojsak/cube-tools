@@ -120,6 +120,9 @@ class cube():
             # if i != self.NX*self.NY*self.NZ: raise NameError, "FSCK!"
         return None
 
+    def get_volume(self):
+        return self.voxelVolume, self.cubeVolume
+
     def write_cube(self, fname, comment='Cube file written by cubetools \ncubetools %3.1f' % __version__):
         '''
         Write out a Gaussian Cube file
@@ -157,7 +160,7 @@ class cube():
                             fout.write("%.5e " % self.data[ix, iy, iz]),
                             if (iz % 6 == 5):
                                 fout.write('\n')
-                                fout.write("\n")
+
         except IOError as e:
             print("File used as output does not work: %s" % fname)
             print("File error ({0}): {1}".format(e.errno, e.strerror))
