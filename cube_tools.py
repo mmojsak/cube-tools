@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-# import time
+import time
 import numpy as np
-# from os.path import isfile
-# from sys import exit,argv
+from os.path import isfile
+from sys import exit,argv
 from scipy import ndimage
 from scipy.ndimage.filters import gaussian_filter
 from scipy.constants import physical_constants
-# import argparse, copy
-# import pdb
+import argparse, copy
+import pdb
 from argparse import RawTextHelpFormatter
 from skimage import transform
 from scipy.spatial.transform import Rotation as R
@@ -114,7 +114,7 @@ class cube():
             # if i != self.NX*self.NY*self.NZ: raise NameError, "FSCK!"
         return None
 
-    def write_cube(self, fname, comment='Cube file written by CubeToolz \nCubeToolz %3.1f' % __version__):
+    def write_cube(self, fname, comment='Cube file written by cube-tools \ncube-tools %3.1f' % __version__):
         '''
         Write out a Gaussian Cube file
         '''

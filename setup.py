@@ -2,23 +2,23 @@
 from setuptools import setup
 
 setup(
-    name="Cube-Toolz",
-    version="0.3",
+    name="cube-tools",
+    version="1.0",
     description="A python library and tool to read in and manipulate Gaussian cube files.",
     keywords="gaussian cube file manipulation",
-    url="https://github.com/funkymunkycool/Cube-Toolz",
-    author="Tassem El-Sayed",
+    url="https://github.com/mmojsak/cube-tools",
+    author="Mateusz Mojsak",
     author_email="",
     classifiers=[
         "Environment :: Console",
         "Topic :: Scientific/Engineering :: Chemistry",
     ],
     py_modules=[
-        "cube_tools",
+        "cube-tools",
     ],
     entry_points={
         "console_scripts": [
-            "cube_tools = cube_tools:main",
+            "cube-tools = cube-tools:main",
         ],
     },
     install_requires=[
