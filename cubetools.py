@@ -432,7 +432,7 @@ def expand_cell(files, new_size):
                                                  new_size[2]))
     return None
 
-def cube_rescale(files):
+def cube_rescale(files, fname):
     cube_in = cube(files[0])
     cube_in.rescale_cube()
     cube_in.write_cube()
