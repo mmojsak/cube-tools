@@ -432,6 +432,11 @@ def expand_cell(files, new_size):
                                                  new_size[2]))
     return None
 
+def cube_rescale(files):
+    cube_in = cube(files[0])
+    cube_in.rescale_cube()
+    cube_in.write_cube()
+    return None
 
 def cube_integrate(files):
     # print(type(files))
@@ -474,7 +479,7 @@ def main():
                         nargs='+')
     parser.add_argument("-rs", "--rescale",
                         help="Rescale a CASTEP cube file to e/bohr^3",
-                        action="store_true")
+                        nargs=1, type=str)
     parser.add_argument("-a", "--add",
                         help="Add two or more cube files together",
                         action="store_true")
@@ -568,7 +573,9 @@ def main():
                 rotate_cube(args.Files[0], args.rotate[0], axes)
             else:
                 print('No axis provided. Please provide an axis using the -ax flag.')
-
+    if args.rescale:
+        if args.Files:
+            cube_rescale(args.Files, args.rescale[0])
     return None
 
 
