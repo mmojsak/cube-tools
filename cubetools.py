@@ -435,7 +435,7 @@ def expand_cell(files, new_size):
 def cube_rescale(files):
     cube_in = cube(files[0])
     cube_in.rescale_cube()
-    cube_in.write_cube()
+    cube_in.write_cube(fname)
     return None
 
 def cube_integrate(files):
