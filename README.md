@@ -4,7 +4,7 @@ cubetools
 
 Python tools for working with Gaussian-style .cube files. This library includes functions to:
 - Read and write Gaussian .cube files
-- Rescale .cube files from e/voxel to e/bohr$^3$ (for CASTEP-generated charge densities)
+- Rescale .cube files from e/voxel to e/bohr<sup>3</sup> (for CASTEP-generated charge densities)
 - Translate and rotate .cube data
 - Integrate around a particular atom
 - Integrate around a sphere
