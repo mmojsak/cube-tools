@@ -1,15 +1,16 @@
 ----
-cube-tools
+cubetools
 ----
 
 Python tools for working with Gaussian-style .cube files. This library includes functions to:
-- Read and write Gaussian cube files
-- Translate and rotate cube data
+- Read and write Gaussian .cube files
+- Rescale .cube files from e/voxel to e/bohr$^3$ (for CASTEP-generated charge densities)
+- Translate and rotate .cube data
 - Integrate around a particular atom
 - Integrate around a sphere
-- Integrate around the whole cube file
+- Integrate around the whole .cube file
 - Take the planar average
-- Add/subtract/multiply cube files
+- Add/subtract/multiply .cube files
 
 Planar averages are outputted as a column of distance and electrons. It is normalized to give the total number of electrons.
 
