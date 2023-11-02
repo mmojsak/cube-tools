@@ -14,7 +14,7 @@ from scipy.spatial.transform import Rotation as R
 
 '''
 -----------
-Cube Tools
+cubetools
 -----------
 
 A python library and tool to read in and manipulate Gaussian cube files. This code allows you to:
@@ -566,6 +566,7 @@ def main():
             cube_integrate_ref(args.Files,
                                args.integrateref[0], args.integrateref[1],
                                args.integrateref[2], args.integrateref[3])
+    # rotate routine for command line use
     if args.rotate:
         if args.Files:
             if args.axis:
@@ -573,6 +574,7 @@ def main():
                 rotate_cube(args.Files[0], args.rotate[0], axes)
             else:
                 print('No axis provided. Please provide an axis using the -ax flag.')
+    # rescale routine for command line use
     if args.rescale:
         if args.Files:
             cube_rescale(args.Files, args.rescale[0])
