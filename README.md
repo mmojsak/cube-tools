@@ -7,8 +7,8 @@ Python tools for working with Gaussian-style .cube files. This library includes 
 - Rescale .cube files from e/voxel to e/bohr<sup>3</sup> (for CASTEP-generated charge densities)
 - Translate and rotate .cube data
 - Integrate around a particular atom
-- Integrate around a sphere
-- Integrate around the whole .cube file
+- Integrate within a spherical region
+- Integrate the whole .cube file
 - Take the planar average
 - Add/subtract/multiply .cube files
 
