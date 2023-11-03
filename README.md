@@ -28,14 +28,14 @@ pip install -r requirements.txt
 ```
 to install all the requirements.
 
-This is designed to be used either as a library, or to be run from the command line. If you decide to run it from the command line, here are the required arguments:
+The code should be run from the command line, but can also be used as a library (all functions are defined in the ``cubetools.py`` module). While no documentation currently exists for use as a library, runing from the command line uses the following arguments:
 
 positional arguments:
-  Files                 Cube files used in program
+  Files                 Input .cube files
 
 optional arguments:
-* -h, --help            show this help message and exit
-* -rs, --rescale         Rescale a CASTEP .cube file to e/bohr^3
+* -h, --help            Show this help message and exit
+* -rs, --rescale        Rescale a CASTEP .cube file to e/bohr^3
 * -a, --add             Add two or more cube files together
 * -s, --subtract        Subtract two or more cube files together
 * -M, --multiply        Multiply two or more cube files together
@@ -48,4 +48,4 @@ optional arguments:
 * -m MEAN, --mean MEAN  Calculate planar average of a cube file along a particular axis. Normalized to give the total number of electrons (particles). Arguments are necessarily x,y or z.
 
 
-usage: cube_tools.py [-h] [-a] [-s] [-p [POWER]] [-t TRANSLATE TRANSLATE TRANSLATE] Files [Files ...]
+usage: cube_tools.py [-h] [-rs] [-a] [-s] [-p [POWER]] [-t TRANSLATE TRANSLATE TRANSLATE] Files [Files ...]
