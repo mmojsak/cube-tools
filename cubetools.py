@@ -634,7 +634,7 @@ def main():
     # fix castep file routine for command line use
     if args.fixcastep:
         if args.Files:
-            fixcastep(args.Files, args.rescale[0])
+            fixcastep(args.Files, args.fixcastep[0])
     return None
 
 
