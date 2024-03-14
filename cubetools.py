@@ -470,6 +470,54 @@ def planar_average_cube(files, vector):
     return planav
 
 
+def fixcastep(files):
+    cube_in = cube(files[0])
+    cube_in.rescale_cube()
+    comment = 'Cube file generated from CASTEP .chargeden_cube file\nrescaled to e/bohr^3 and with redundant points removed.'
+    '''
+        Write out a Gaussian Cube file
+        '''
+    try:
+        with open(fname, 'w') as fout:
+            if len(comment.split('\n')) != 2:
+                print('Comment line NEEDS to be two lines!')
+                cube_in.terminate_code()
+            fout.write('%s\n' % comment)
+            fout.write("%4d %.6f %.6f %.6f\n" % (cube_in.natoms,
+                                                 cube_in.origin[0],
+                                                 cube_in.origin[1],
+                                                 cube_in.origin[2]))
+            fout.write("%4d %.6f %.6f %.6f\n" % (cube_in.NX-1,
+                                                 cube_in.X[0],
+                                                 cube_in.X[1],
+                                                 cube_in.X[2]))
+            fout.write("%4d %.6f %.6f %.6f\n" % (cube_in.NY-1,
+                                                 cube_in.Y[0],
+                                                 cube_in.Y[1],
+                                                 cube_in.Y[2]))
+            fout.write("%4d %.6f %.6f %.6f\n" % (cube_in.NZ-1,
+                                                 cube_in.Z[0],
+                                                 cube_in.Z[1],
+                                                 cube_in.Z[2]))
+            for atom, xyz in zip(cube_in.atoms, cube_in.atomsXYZ):
+                fout.write("%s %d %6.3f %6.3f %6.3f\n" % (atom, 0,
+                                                          xyz[0],
+                                                          xyz[1],
+                                                          xyz[2]))
+            for ix in range(cube_in.NX-1):
+                for iy in range(cube_in.NY-1):
+                    for iz in range(cube_in.NZ-1):
+                        fout.write("%.5e " % cube_in.data[ix, iy, iz]),
+                        if (iz % 6 == 5):
+                            fout.write('\n')
+
+    except IOError as e:
+        print("File used as output does not work: %s" % fname)
+        print("File error ({0}): {1}".format(e.errno, e.strerror))
+        cube_in.terminate_code()
+    return None
+
+
 def main():
     parser = argparse.ArgumentParser(description="A python library and tool to read in and manipulate Gaussian cube files. This code allows you to:\n    Read and write Gaussian cube files\n    Translate and rotate cube data\n    Integrate around a particular atom\n    Integrate around a sphere\n    Integrate around the whole cube file", formatter_class=RawTextHelpFormatter)
 #    Take the planar average")
@@ -516,6 +564,8 @@ def main():
     parser.add_argument("-ax", "--axis",
                         help="Axis parameter",
                         nargs=2, type=int)
+    parser.add_argument("-f", "--fixcastep",
+                        help="Fix a CASTEP .cube file by rescaling to e/bohr^3 and removing redundant last points.")
     if len(argv) <= 2:
         parser.print_help()
 
@@ -578,6 +628,10 @@ def main():
     if args.rescale:
         if args.Files:
             cube_rescale(args.Files, args.rescale[0])
+    # fix castep file routine for command line use
+    if args.fixcastep:
+        if args.Files:
+            fixcastep(args.Files, args.fixcastep[0])
     return None
 
 
