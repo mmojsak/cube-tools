@@ -565,7 +565,8 @@ def main():
                         help="Axis parameter",
                         nargs=2, type=int)
     parser.add_argument("-f", "--fixcastep",
-                        help="Fix a CASTEP .cube file by rescaling to e/bohr^3 and removing redundant last points.")
+                        help="Fix a CASTEP .cube file by rescaling to e/bohr^3 and removing redundant last points.",
+                        nargs=1, type=str)
     if len(argv) <= 2:
         parser.print_help()
 
