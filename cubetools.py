@@ -432,11 +432,13 @@ def expand_cell(files, new_size):
                                                  new_size[2]))
     return None
 
+
 def cube_rescale(files, fname):
     cube_in = cube(files[0])
     cube_in.rescale_cube()
     cube_in.write_cube(fname)
     return None
+
 
 def cube_integrate(files):
     # print(type(files))
@@ -470,7 +472,7 @@ def planar_average_cube(files, vector):
     return planav
 
 
-def fixcastep(files):
+def fixcastep(files, fname):
     cube_in = cube(files[0])
     cube_in.rescale_cube()
     comment = 'Cube file generated from CASTEP .chargeden_cube file\nrescaled to e/bohr^3 and with redundant points removed.'
@@ -632,7 +634,7 @@ def main():
     # fix castep file routine for command line use
     if args.fixcastep:
         if args.Files:
-            fixcastep(args.Files, args.fixcastep[0])
+            fixcastep(args.Files, args.rescale[0])
     return None
 
 
