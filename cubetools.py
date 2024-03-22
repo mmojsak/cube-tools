@@ -589,7 +589,7 @@ def main():
                         nargs=1, type=str)
     parser.add_argument("-rdl", "--redlap",
                         help="Calculate the reduced laplacian cube from density cube and laplacian cube.",
-                        nargs='?', type=str)
+                        nargs=1, type=str)
     if len(argv) <= 2:
         parser.print_help()
 
