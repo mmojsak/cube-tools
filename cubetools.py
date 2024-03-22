@@ -658,7 +658,7 @@ def main():
     # reduced laplacian routine
     if args.redlap:
         if args.Files:
-            fixcastep(args.Files, args.redlap[0])
+            calc_red_lap(args.Files, args.redlap[0])
     return None
 
 
