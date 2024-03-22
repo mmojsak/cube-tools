@@ -185,7 +185,7 @@ class cube():
         print(power)
         return None
 
-    def scale_cube(self, files, factor):
+    def scale_cube(self, factor):
         '''
         Scales cube data by a given factor
         '''
