@@ -538,8 +538,6 @@ def fixcastep(files, fname):
 
 def main():
     parser = argparse.ArgumentParser(description="A python library and tool to read in and manipulate Gaussian cube files. This code allows you to:\n    Read and write Gaussian cube files\n    Translate and rotate cube data\n    Integrate around a particular atom\n    Integrate around a sphere\n    Integrate around the whole cube file", formatter_class=RawTextHelpFormatter)
-#    Take the planar average")
-
     parser.add_argument("Files",
                         help="Cube files used in program",
                         nargs='+')
@@ -587,7 +585,7 @@ def main():
                         nargs=1, type=str)
     parser.add_argument("-rdl", "--redlap",
                         help="Calculate the reduced laplacian cube from density cube and laplacian cube.",
-                        nargs=1, type=str)
+                        nargs='?', type=str)
     if len(argv) <= 2:
         parser.print_help()
 
