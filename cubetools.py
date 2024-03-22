@@ -31,7 +31,7 @@ __version__ = 1.0
 class cube():
     '''
     Cube Class:
-    Includes a bunch of methods to manipulate cube data
+    Includes methods to manipulate cube data
     '''
 
     def __init__(self, fname=None):
@@ -472,6 +472,22 @@ def planar_average_cube(files, vector):
     return planav
 
 
+def calc_red_lap(files, fname):
+    '''1st file should be the density cube file.
+       2nd file should be the laplacian cube file.'''
+    lap = cube(files[1])
+    den = cube(files[0])
+    den.square_cube(power=5/3)
+    den.scale(factor=4*(3*np.pi**2)**(2/3))
+
+    cube_out = copy.deepcopy(lap)
+
+    cube_out.data *= den.data
+    print(f"====== Writing reduced laplacian cube as {fname} ======")
+    cube_out.write_cube(fname)
+    return cube_out
+
+
 def fixcastep(files, fname):
     cube_in = cube(files[0])
     cube_in.rescale_cube()
@@ -569,6 +585,9 @@ def main():
     parser.add_argument("-f", "--fixcastep",
                         help="Fix a CASTEP .cube file by rescaling to e/bohr^3 and removing redundant last points.",
                         nargs=1, type=str)
+    parser.add_argument("-rdl", "--redlap",
+                        help="Calculate the reduced laplacian cube from density cube and laplacian cube.",
+                        nargs=1, type=str)
     if len(argv) <= 2:
         parser.print_help()
 
@@ -635,6 +654,11 @@ def main():
     if args.fixcastep:
         if args.Files:
             fixcastep(args.Files, args.fixcastep[0])
+    return None
+    # reduced laplacian routine
+    if args.redlap:
+        if args.Files:
+            fixcastep(args.Files, args.redlap[0])
     return None
 
 
