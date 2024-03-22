@@ -479,6 +479,7 @@ def calc_red_lap(files, fname):
     lap = cube(files[1])
     print(f'Loading density cube {files[0]}')
     den = cube(files[0])
+    den.data = abs(den.data)
     print(f'Raising density data to power of 5/3')
     den.square_cube(power=float(5/3))
     print(r'Scaling density data by factor of $4(3\pi^2)^{2/3}$')
