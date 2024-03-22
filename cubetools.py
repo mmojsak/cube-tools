@@ -654,7 +654,6 @@ def main():
     if args.fixcastep:
         if args.Files:
             fixcastep(args.Files, args.fixcastep[0])
-    return None
     # reduced laplacian routine
     if args.redlap:
         if args.Files:
