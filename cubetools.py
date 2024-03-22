@@ -475,14 +475,18 @@ def planar_average_cube(files, vector):
 def calc_red_lap(files, fname):
     '''1st file should be the density cube file.
        2nd file should be the laplacian cube file.'''
+    print(f'Loading laplacian cube {files[1]}')
     lap = cube(files[1])
+    print(f'Loading density cube {files[0]}')
     den = cube(files[0])
+    print(f'Raising density data to power of 5/3')
     den.square_cube(power=5/3)
-    den.scale(factor=4*(3*np.pi**2)**(2/3))
+    print(r'Scaling density data by factor of $4(3\pi^2)^{2/3}$')
+    den.scale_cube(factor=4*(3*np.pi**2)**(2/3))
 
     cube_out = copy.deepcopy(lap)
-
-    cube_out.data *= den.data
+    print('Reducing laplacian data')
+    cube_out.data /= den.data
     print(f"====== Writing reduced laplacian cube as {fname} ======")
     cube_out.write_cube(fname)
     return cube_out
