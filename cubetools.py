@@ -477,12 +477,15 @@ def calc_red_lap(files, fname):
        2nd file should be the laplacian cube file.'''
     print(f'Loading laplacian cube {files[1]}')
     lap = cube(files[1])
+
     print(f'Loading density cube {files[0]}')
     den = cube(files[0])
     den.data = abs(den.data)
+
     print(f'Raising density data to power of 5/3')
     den.square_cube(power=float(5/3))
-    print(r'Scaling density data by factor of $4(3\pi^2)^{2/3}$')
+
+    print('Scaling density data by factor of 4(3pi^2)^(2/3)')
     den.scale_cube(factor=4*(3*np.pi**2)**(2/3))
 
     cube_out = copy.deepcopy(lap)
